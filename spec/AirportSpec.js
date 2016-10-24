@@ -41,4 +41,11 @@ describe("Airport", function(){
       expect(function(){ airport.clearForTakeOff(plane); }).toThrowError("cannot takeoff during storm");
     });
   });
+
+  describe("capacity", function() {
+    it("cannot land more planes than the hangar capacity", function(){
+      airport.clearForLanding(plane);
+      expect(function() { airport.clearForLanding(plane); }).toThrowError("cannot land as the hangar is full");
+    });
+  });
 });
